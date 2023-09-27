@@ -6,8 +6,8 @@ import './App.css'
 import { Header } from './components/Header';
 
 
-import { Board } from './pages/Board'
-import { Menu } from './pages/Menu';
+import { Board } from './pages/Board/index'
+import { Menu } from './pages/Menu/index';
 import { Create } from './pages/Create';
 import { Setting } from './pages/Setting';
 import { usePage } from './hooks';

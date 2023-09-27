@@ -1,24 +1,14 @@
 import { useEffect,useState } from 'react';
 import './Board.css';
 
+import { initializeMatrix } from '../../utils';
+
 const cellSize = 50;
 const refreshInterval = 1000 // 2 sec
 
-const nC = Math.round(window.innerWidth / cellSize);
 const nR = Math.round(window.innerHeight / cellSize);
+const nC = Math.round(window.innerWidth / cellSize);
 
-function initializeMatrix() {
-  
-  const matrix = Array(nR).fill(Array(nC).fill(0));
-  
-  for (let r = 0; r < nR; r++) {
-    for (let c = 0; c< nC; c++) {
-      matrix[r][c] = Math.round(Math.random() * 1000) % 3 === 0? 0 : 1;
-    }
-  }
-
-  return matrix;
-}
 
 function getNumNeighs(matrix,r,c){
 
@@ -95,7 +85,7 @@ function nextCycle(matrix){
 
 export function Board(props) {
 
-  const [matrix,setMatrix] = useState(initializeMatrix());
+  const [matrix,setMatrix] = useState(initializeMatrix(nR,nC));
 
   useEffect(() => {
 
