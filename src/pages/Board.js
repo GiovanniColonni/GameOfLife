@@ -1,5 +1,5 @@
 import { useEffect,useState } from 'react';
-import '../Board.css';
+import './Board.css';
 
 const cellSize = 50;
 const refreshInterval = 1000 // 2 sec
@@ -95,7 +95,7 @@ function nextCycle(matrix){
 // use bitmap https://gist.github.com/binarymax/ab3e917c170ca95268e5 or not use int but a byte or decrease that 
 
 
-export function Board() {
+export function Board(props) {
 
   const [matrix,setMatrix] = useState(initializeMatrix());
 

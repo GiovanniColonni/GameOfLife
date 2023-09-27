@@ -1,0 +1,22 @@
+.tableMenu {
+    width: 1850px;
+    height: 939px;
+    display: table;
+  }
+  
+  .rowMenu {
+  display: table-row;
+  }
+  
+  .cellMenu {
+    display: table-cell;
+    border: 1px  #ccc;
+  }
+  
+  .cellMenu.right {
+    background-color: #804444;
+  }
+  
+  .cellMenu.left {
+    background-color: #b8afaf;
+  }
