@@ -9,7 +9,6 @@ const nR = Math.round(window.innerHeight / cellSize);
 
 function initializeMatrix() {
   
-  console.log("Total number of cells", nC * nR);
   const matrix = Array(nR).fill(Array(nC).fill(0));
   
   for (let r = 0; r < nR; r++) {
@@ -74,9 +73,8 @@ function printMatrix(matrix){
 
 function nextCycle(matrix){
   let nextMatrix = Array(nR).fill(Array(nC))
-  printMatrix(matrix)
-  console.log("Rerender")
-  console.log(nextMatrix)
+  //printMatrix(matrix)
+  //console.log("Rerender")
   for (let r = 0; r < nR; r++) {
     const row = Array(nC)
     for (let c = 0; c< nC; c++) {
@@ -84,11 +82,11 @@ function nextCycle(matrix){
       nextMatrix[r][c] = nv
       row[c] = nv
     }
-    console.log(nextMatrix[r])
+    //console.log(nextMatrix[r])
     nextMatrix[r] = row
   }
   
-  printMatrix(nextMatrix)
+  //printMatrix(nextMatrix)
   return nextMatrix;
 }
 

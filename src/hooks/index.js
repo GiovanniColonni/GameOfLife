@@ -8,6 +8,8 @@ export function usePage(){
     function setPage(newPage){
         setPreviousPage(currentPage)
         setCurrentPage(newPage)
+
+        console.log("newPage",newPage,currentPage,previousPage)
     }
         
     return {currentPage,previousPage,setPage}
