@@ -1,26 +1,3 @@
-.table {
-  width: 1850px;
-  height: 939px;
-  display: table;
-}
-
-.row {
-display: table-row;
-}
-
-.cell {
-  display: table-cell;
-  border: 1px  #ccc;
-}
-
-.cell.alive {
-  background-color: #000;
-}
-
-.cell.dead {
-  background-color: #fff;
-}
-
 .App {
   text-align: center;
 }

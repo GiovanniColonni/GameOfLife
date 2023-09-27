@@ -1,5 +1,5 @@
 import { useEffect,useState } from 'react';
-import './App.css';
+import '../Board.css';
 
 const cellSize = 50;
 const refreshInterval = 1000 // 2 sec
@@ -92,13 +92,12 @@ function nextCycle(matrix){
   return nextMatrix;
 }
 
+// use bitmap https://gist.github.com/binarymax/ab3e917c170ca95268e5 or not use int but a byte or decrease that 
 
 
-
-function App() {
+export function Board() {
 
   const [matrix,setMatrix] = useState(initializeMatrix());
-  const [game,setGame] = useState(false)
 
   useEffect(() => {
 
@@ -110,35 +109,28 @@ function App() {
 
   function Board(){
     return (
-      <div className="table">
-      {
-      matrix.map((row, i) => (
-        <div key={i} className="row">
-          {row.map((cell, j) => {
-            const cellClass = cell === 1 ? "cell alive" : "cell dead";
-        return(<div key={j} className={cellClass}></div>)
-      })}
-        </div>
-      ))
-      }
-    </div>
+        <div className="table">
+          {
+          matrix.map((row, i) => (
+            <div key={i} className="row">
+              {row.map((cell, j) => {
+                const cellClass = cell === 1 ? "cell alive" : "cell dead";
+            return(<div key={j} className={cellClass}></div>)
+          })}
+            </div>
+          ))
+          }
+        </div>      
     )
   }
 
-  function Menu(){
-    return(
-      <div className='app'>
-        <h1>Game of life</h1>
-      </div>
-    )
-  }
 
   return (  
     <Board/>
   );
 }
 
-export default App;
+export default Board;
 
 /**
  * The universe of the Game of Life is an infinite, two-dimensional orthogonal grid of square cells,
