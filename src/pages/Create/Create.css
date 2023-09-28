@@ -1,23 +1,23 @@
-.table {
+.tablePG {
     margin: 50px;
     width: 1850px;
-    height: 839px;
+    height: 939px;
     display: table;
   }
   
-  .row {
+  .rowPG {
   display: table-row;
   }
   
-  .cell {
+  .cellPG {
     display: table-cell;
-    border: 1px  #ccc;
+    border: 1px solid #000;
   }
   
-  .cell.alive {
-    background-color: #000;
+  .cellPG.alive {
+    background-color: #575757;
   }
   
-  .cell.dead {
+  .cellPG.dead {
     background-color: #fff;
   }

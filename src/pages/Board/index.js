@@ -1,7 +1,6 @@
 import { useEffect,useState } from 'react';
 import './Board.css';
-
-import { initializeMatrix } from '../../utils';
+import { printMatrix,initializeMatrix } from '../../utils';
 
 const cellSize = 50;
 const refreshInterval = 1000 // 2 sec
@@ -53,13 +52,7 @@ function getDestiny(matrix,r,c){
 
 }
 
-function printMatrix(matrix){
-  console.warn("M-----------------------")
-  matrix.forEach(element => {
-      console.log(element,"\n")
-  })
-  console.warn("M-----------------------")
-}
+
 
 function nextCycle(matrix){
   let nextMatrix = Array(nR).fill(Array(nC))

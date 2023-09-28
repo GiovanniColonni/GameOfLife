@@ -10,3 +10,11 @@ export function initializeMatrix(nR,nC) {
   
     return matrix;
 }
+
+export function printMatrix(matrix){
+  console.warn("M-----------------------")
+  matrix.forEach(element => {
+      console.log(element,"\n")
+  })
+  console.warn("M-----------------------")
+}
