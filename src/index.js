@@ -11,7 +11,7 @@ import { Menu } from './pages/Menu/index';
 import { Create } from './pages/Create';
 import { Setting } from './pages/Setting';
 import { usePage } from './hooks';
-
+import { useMatrix } from './hooks';
 
 
 // TODO: set dimension of the inner DIV out of the header
@@ -19,11 +19,12 @@ import { usePage } from './hooks';
 export function App(){
   
   const {currentPage,previousPage,setPage} = usePage()
+  const {matrix,setMatrix} = useMatrix()
 
   const pageMap = {
-    "Board": <Board/>,
+    "Board": <Board matrix={matrix} setMatrix={setMatrix} />,
     "Menu":<Menu setPage={setPage}/>,
-    "Create":<Create/>,
+    "Create":<Create matrix={matrix} setMatrix={setMatrix}/>,
     "Setting":<Setting/>
   }
 

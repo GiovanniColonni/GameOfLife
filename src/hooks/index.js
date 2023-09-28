@@ -1,4 +1,5 @@
 import { useEffect,useState } from "react";
+import { initializeMatrix } from "../utils";
 
 export function usePage(){
 
@@ -13,4 +14,19 @@ export function usePage(){
     }
         
     return {currentPage,previousPage,setPage}
+}
+
+export function useMatrix(){
+    const cellSize = 50;
+
+    const nR = Math.round(window.innerHeight / cellSize);
+    const nC = Math.round(window.innerWidth / cellSize);
+
+
+    const [matrix,setMatrix] = useState(initializeMatrix(nR,nC));
+    
+    return {
+        nR,nC,
+        matrix,setMatrix,        
+    }
 }

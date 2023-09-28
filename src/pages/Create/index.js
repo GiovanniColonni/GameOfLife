@@ -1,22 +1,19 @@
-import { useState } from "react";
-import { printMatrix } from "../../utils";
+import { useState, useMemo } from "react";
 
 import "./Create.css"
 
-const cellSize = 200;
+const cellSize = 50;
 
 const nR = Math.round(window.innerHeight / cellSize);
 const nC = Math.round(window.innerWidth / cellSize);
 
-export function Create(){
-    const initialMatrix = Array(nR).fill(Array(nC).fill(0))
-    const [matrix,setMatrix] = useState(initialMatrix)
-    
+export function Create(props){
+
+    const {matrix,setMatrix} = props
+
     const flip = (i,j) => {
-      console.log("flip",i,j)
-      printMatrix(matrix)
-      
-      //const newMatrix = window.structuredClone({matrix:matrix},{transfer:[matrix]})
+      console.log("Flip",i,j)
+      //const newMatrix = structuredClone({matrix:matrix},{transfer:[matrix]})
       let newMatrix = Array(nR)
       
       matrix.forEach((clm,index)=>{
@@ -25,8 +22,6 @@ export function Create(){
 
       newMatrix[i][j] = newMatrix[i][j] === 0? 1:0 
       
-      console.log(newMatrix[i][j])
-
       setMatrix(newMatrix)
     }
 

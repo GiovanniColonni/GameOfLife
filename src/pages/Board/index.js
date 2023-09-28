@@ -2,10 +2,11 @@ import { useEffect,useState } from 'react';
 import './Board.css';
 import { printMatrix,initializeMatrix } from '../../utils';
 
-const cellSize = 50;
 const refreshInterval = 1000 // 2 sec
 
-const nR = Math.round(window.innerHeight / cellSize);
+const cellSize = 50;
+
+const nR = Math.round(window.innerHeight / cellSize); // try with % and so /100 and in css cellSize use %
 const nC = Math.round(window.innerWidth / cellSize);
 
 
@@ -78,7 +79,7 @@ function nextCycle(matrix){
 
 export function Board(props) {
 
-  const [matrix,setMatrix] = useState(initializeMatrix(nR,nC));
+  const {matrix,setMatrix} = props
 
   useEffect(() => {
 
@@ -96,7 +97,7 @@ export function Board(props) {
             <div key={i} className="row">
               {row.map((cell, j) => {
                 const cellClass = cell === 1 ? "cell alive" : "cell dead";
-            return(<div key={j} className={cellClass}></div>)
+            return(<div key={j} style={{width:cellSize,height:cellSize}} className={cellClass}></div>)
           })}
             </div>
           ))
