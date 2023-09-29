@@ -1,13 +1,47 @@
 import { useEffect,useState } from 'react';
 import './Board.css';
-import { printMatrix,initializeMatrix } from '../../utils';
+import { Header } from '../../components/Header';
+import { useMatrix } from '../../hooks';
 
-const refreshInterval = 1000 // 2 sec
 
-const cellSize = 50;
 
-const nR = Math.round(window.innerHeight / cellSize); // try with % and so /100 and in css cellSize use %
-const nC = Math.round(window.innerWidth / cellSize);
+// use bitmap https://gist.github.com/binarymax/ab3e917c170ca95268e5 or not use int but a byte or decrease that 
+
+
+export function Board(props) {
+
+  const {nR,nC,refInt,cellSize,matrix,setMatrix,setPage,previousPage,currentPage,setSavedMatrix} = props
+  const [stop,setStop] = useState(false)
+  
+  useEffect(() => {
+    if(stop) return () => {}
+    const intervalUpdate = setInterval(() => {setMatrix(preMatrix => nextCycle(preMatrix))},refInt)
+
+    return () => clearInterval(intervalUpdate);
+
+  },[matrix,stop])
+
+
+  function Board(){
+    return (
+      <>
+      <Header setSavedMatrix={setSavedMatrix} matrix={matrix} stop={stop} setPage={setPage} setStop={setStop} currentPage={currentPage} previousPage={previousPage} />
+        <div className="table">
+          {
+          matrix.map((row, i) => (
+            <div key={i} className="row">
+              {row.map((cell, j) => {
+                const cellClass = cell === 1 ? "cell alive" : "cell dead";
+            return(<div key={j} style={{width:cellSize,height:cellSize}} className={cellClass}></div>)
+          })}
+            </div>
+          ))
+          }
+        </div>      
+      </>
+      )
+  }
+
 
 
 function getNumNeighs(matrix,r,c){
@@ -53,8 +87,6 @@ function getDestiny(matrix,r,c){
 
 }
 
-
-
 function nextCycle(matrix){
   let nextMatrix = Array(nR).fill(Array(nC))
   //printMatrix(matrix)
@@ -73,38 +105,6 @@ function nextCycle(matrix){
   //printMatrix(nextMatrix)
   return nextMatrix;
 }
-
-// use bitmap https://gist.github.com/binarymax/ab3e917c170ca95268e5 or not use int but a byte or decrease that 
-
-
-export function Board(props) {
-
-  const {matrix,setMatrix} = props
-
-  useEffect(() => {
-
-    const intervalUpdate = setInterval(() => {setMatrix(preMatrix => nextCycle(preMatrix))},refreshInterval)
-
-    return () => clearInterval(intervalUpdate);
-
-  },[matrix])
-
-  function Board(){
-    return (
-        <div className="table">
-          {
-          matrix.map((row, i) => (
-            <div key={i} className="row">
-              {row.map((cell, j) => {
-                const cellClass = cell === 1 ? "cell alive" : "cell dead";
-            return(<div key={j} style={{width:cellSize,height:cellSize}} className={cellClass}></div>)
-          })}
-            </div>
-          ))
-          }
-        </div>      
-    )
-  }
 
 
   return (  

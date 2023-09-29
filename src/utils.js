@@ -11,6 +11,10 @@ export function initializeMatrix(nR,nC) {
     return matrix;
 }
 
+export function cloneMatrix(){
+  
+}
+
 export function printMatrix(matrix){
   console.warn("M-----------------------")
   matrix.forEach(element => {

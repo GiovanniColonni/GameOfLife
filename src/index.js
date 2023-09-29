@@ -14,23 +14,26 @@ import { usePage } from './hooks';
 import { useMatrix } from './hooks';
 
 
-// TODO: set dimension of the inner DIV out of the header
+// TODO: 1 .remove scrolling table
+// 2. centralize dimensions and try also 5%
+// 3. pagina Setting
+// 4. Grafica app 
+// 5. implementare il tieni premuto per l'edit
 
 export function App(){
   
   const {currentPage,previousPage,setPage} = usePage()
-  const {matrix,setMatrix} = useMatrix()
+  const {matrix,setMatrix,setSavedMatrix,nR,nC,refInt,cellSize} = useMatrix()
 
   const pageMap = {
-    "Board": <Board matrix={matrix} setMatrix={setMatrix} />,
-    "Menu":<Menu setPage={setPage}/>,
-    "Create":<Create matrix={matrix} setMatrix={setMatrix}/>,
-    "Setting":<Setting/>
+    "Board": <Board nR={nR} nC={nC} refInt={refInt} cellSize={cellSize} setSavedMatrix={setSavedMatrix} matrix={matrix} setMatrix={setMatrix} currentPage={currentPage} previousPage={previousPage} setPage={setPage}/>,
+    "Menu":<Menu nR={nR} nC={nC} refInt={refInt} cellSize={cellSize} currentPage={currentPage} previousPage={previousPage} setPage={setPage}/>,
+    "Create":<Create nR={nR} nC={nC} refInt={refInt} cellSize={cellSize} currentPage={currentPage} previousPage={previousPage} setPage={setPage} matrix={matrix} setMatrix={setMatrix}/>,
+    "Setting":<Setting nR={nR} nC={nC} refInt={refInt} cellSize={cellSize}/>
   }
 
   return(
     <div className='App'>
-      <Header currentPage={currentPage} previousPage={previousPage} setPage={setPage}/>
       <main>
       {pageMap[currentPage]}
       </main>

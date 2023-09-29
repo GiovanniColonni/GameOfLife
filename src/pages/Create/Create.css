@@ -1,8 +1,8 @@
 .tablePG {
-    margin: 50px;
-    width: 1850px;
-    height: 939px;
-    display: table;
+  margin: 50px;
+  max-height: 100;
+  display: grid;
+  border: 2px solid;
   }
   
   .rowPG {

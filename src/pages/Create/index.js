@@ -1,16 +1,14 @@
 import { useState, useMemo } from "react";
+import { Header } from "../../components/Header";
 
 import "./Create.css"
+import { useMatrix } from "../../hooks";
 
-const cellSize = 50;
-
-const nR = Math.round(window.innerHeight / cellSize);
-const nC = Math.round(window.innerWidth / cellSize);
 
 export function Create(props){
 
-    const {matrix,setMatrix} = props
-
+    const {nR,nC,cellSize,matrix,setMatrix,savedMatrix,currentPage,setPage,previousPage} = props
+    
     const flip = (i,j) => {
       console.log("Flip",i,j)
       //const newMatrix = structuredClone({matrix:matrix},{transfer:[matrix]})
@@ -27,6 +25,8 @@ export function Create(props){
 
 
     return (
+      <>
+        <Header setPage={setPage} previousPage={previousPage} savedMatrix={savedMatrix} currentPage={currentPage} matrix={matrix} setMatrix={setMatrix}/>
         <div className="tablePG">
           {
           matrix.map((row, i) => (
@@ -39,5 +39,6 @@ export function Create(props){
           ))
           }
         </div>      
-    )
+      </>
+      )
 }
