@@ -6,8 +6,8 @@ import (
 	"time"
 )
 
-const n = 40
-const m = 40
+const n = 150
+const m = 60
 
 func generateRandomMatrix() [][]int {
 	matrix := make([][]int, n)
